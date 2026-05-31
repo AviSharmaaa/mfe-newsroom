@@ -1,0 +1,113 @@
+/*
+ * mfe-weather — hand-written CSS, NO Tailwind, NO utility classes.
+ * Glassmorphism style on purpose: it must look nothing like the
+ * Tailwind/shadcn MFEs so the framework-agnostic point is visually obvious.
+ */
+
+:root {
+  --weather-bg-1: #6a11cb;
+  --weather-bg-2: #2575fc;
+  --weather-glass: rgba(255, 255, 255, 0.15);
+  --weather-glass-border: rgba(255, 255, 255, 0.35);
+  --weather-text: #ffffff;
+  --weather-text-dim: rgba(255, 255, 255, 0.75);
+  --weather-radius: 24px;
+  --weather-blur: 14px;
+}
+
+.weather-card {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 28px 24px;
+  text-align: center;
+  color: var(--weather-text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+
+  background: linear-gradient(135deg, var(--weather-bg-1), var(--weather-bg-2));
+  border: 1px solid var(--weather-glass-border);
+  border-radius: var(--weather-radius);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  overflow: hidden;
+}
+
+/* frosted glass overlay */
+.weather-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--weather-glass);
+  backdrop-filter: blur(var(--weather-blur));
+  -webkit-backdrop-filter: blur(var(--weather-blur));
+  z-index: 0;
+}
+
+.weather-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.weather-icon {
+  font-size: 56px;
+  line-height: 1;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+.weather-label {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--weather-text-dim);
+}
+
+.weather-temp {
+  margin: 4px 0;
+  font-size: 64px;
+  font-weight: 200;
+  line-height: 1;
+}
+
+.weather-unit {
+  font-size: 28px;
+  font-weight: 300;
+  vertical-align: top;
+  margin-left: 2px;
+}
+
+.weather-desc {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.weather-meta {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.weather-wind,
+.weather-code {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 999px;
+  background: var(--weather-glass);
+  border: 1px solid var(--weather-glass-border);
+}
+
+.weather-tag {
+  margin: 18px 0 0;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--weather-text-dim);
+}
+
+.weather-error {
+  background: linear-gradient(135deg, #b91d1d, #6a1111);
+}

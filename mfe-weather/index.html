@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MFE — Weather</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #1a1a2e;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Standalone mount target so the widget runs alone on port 3003 -->
+    <div id="weather-container"></div>
+    <script type="module">
+      import { mount } from '/src/main.js'
+      mount('weather-container')
+    </script>
+  </body>
+</html>
