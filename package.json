@@ -1,0 +1,16 @@
+{
+  "name": "mfe-newsroom",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Micro frontend news dashboard — Shell + 3 remotes via Vite Module Federation",
+  "scripts": {
+    "install:all": "cd shell && npm i && cd ../mfe-headlines && npm i && cd ../mfe-bookmarks && npm i && cd ../mfe-weather && npm i",
+    "build:remotes": "cd mfe-headlines && npm run build && cd ../mfe-bookmarks && npm run build && cd ../mfe-weather && npm run build",
+    "preview:remotes": "concurrently \"cd mfe-headlines && npm run preview\" \"cd mfe-bookmarks && npm run preview\" \"cd mfe-weather && npm run preview\"",
+    "dev:shell": "cd shell && npm run dev",
+    "start": "concurrently \"npm run preview:remotes\" \"npm run dev:shell\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  }
+}
